@@ -66,4 +66,79 @@ But my favorite variable is $food
 pizza has delicious crust!
 ```
 
+## SCRIPT 3: Automating Updates
+```bash
+### update.sh ### 
+#!/bin/bash
+sudo apt update
+sudo apt upgrade -y
+sudo apt autoremove
+sudo apt clean
+echo 'System upgrades successful!'
+```
+Let's get into some practical examples. For the sake of ease, we will be assuming you have installed a Debian/apt based distro. This first script will update and upgrade a Debian/apt based distro. We call `sudo` along with a couple of `apt` commands to:
+* Refresh the `apt` repo
+* Upgrade packages that are available
+* Autoremove old and unneeded packages
+* Clean the download cache
+* Print a message to the console to show success
 
+```bash
+$ ./update.sh
+Get:1 http://deb.debian.org/debian testing InRelease [147 kB]
+Hit:2 http://security.debian.org/debian-security testing-security InRelease
+Get:3 http://deb.debian.org/debian testing/main i386 Packages.diff/Index [63.6 kB]
+Get:4 http://deb.debian.org/debian testing/main amd64 Packages.diff/Index [63.6 kB]
+Get:5 http://deb.debian.org/debian testing/main i386 Packages T-2025-09-23-2006.53-F-2025-09-23-2006.53.pdiff [1,910 B]
+Get:5 http://deb.debian.org/debian testing/main i386 Packages T-2025-09-23-2006.53-F-2025-09-23-2006.53.pdiff [1,910 B]
+Get:6 http://deb.debian.org/debian testing/main amd64 Packages T-2025-09-23-2006.53-F-2025-09-23-2006.53.pdiff [291 B]
+Get:6 http://deb.debian.org/debian testing/main amd64 Packages T-2025-09-23-2006.53-F-2025-09-23-2006.53.pdiff [291 B]
+Fetched 277 kB in 1s (199 kB/s)                     
+All packages are up to date.    
+The following packages were automatically installed and are no longer required:
+  libx264-164  libx264-164:i386
+Use 'sudo apt autoremove' to remove them.
+
+Summary:
+  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 0
+REMOVING:                       
+  libx264-164  libx264-164:i386
+
+Summary:
+  Upgrading: 0, Installing: 0, Removing: 2, Not Upgrading: 0
+  Freed space: 5,735 kB
+
+Continue? [Y/n] y
+(Reading database ... 253891 files and directories currently installed.)
+Removing libx264-164:amd64 (2:0.164.3108+git31e19f9-3) ...
+Removing libx264-164:i386 (2:0.164.3108+git31e19f9-3) ...
+Processing triggers for libc-bin (2.41-12) ...
+System upgrades successful!
+```
+
+## SCRIPT 4: Automating System Backups
+```bash
+### backup.sh ###
+#!/bin/bash
+
+# Main function for performing a backup
+backup () {
+  sudo timeshift --create --comments "Backup created with backup.sh: $(date)" --tags O
+}
+
+# Check if Timeshift is installed. If not, warn the user and prompt to download. 
+if [ "$(dpkg -l | awk '/timeshift/ {print }'|wc -l)" -ge 1 ]; then
+  backup
+else
+  echo WARNING: This script depends on Timeshift. 
+  read -p "Install now?" -n 1 -r
+  if [[ ! $REPLY =~ ^[Yy]$]]
+  then
+    [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1 # handle exits from shell or function but don't exit interactive shell
+  else
+    sudo apt install timeshift
+    backup
+fi
+```
+
+This script will create an on-demand backup for your system. This system relies on a package called Timeshift. This script specifically checks if timeshift is installed before executing. If not, it will ask you to install it. 
