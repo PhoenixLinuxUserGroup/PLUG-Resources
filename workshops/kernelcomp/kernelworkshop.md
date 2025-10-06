@@ -124,5 +124,37 @@ $ qemu-system-x86_64 -kernel bzImage -nographic -append "root=/dev/hda console=t
 
 However, RHEL/CentOS/Fedora users will need to use `virt-manager` to run the instance. 
 
+## Configuring `virt-manager`
+First, make sure your working directory has search permissions so `virt-manager` can access the system image. 
+```bash
+$ chmod a+x /path/to/qemu-kernel-boot/*
+```
+
+If you haven't already, instal `virt-manager` and it's supporting packages
+```bash
+$ sudo yum install virt-install libvirt-python virt-manager virt-install libvirt-client
+```
+
+Start by creating a new, manual install
+![](virtman1.png)
+
+In the OS box, search for "Generic Linux 2024"
+![](virtman2.png)
+
+We can reduce the number of cores and memory assigned to our machine since our install is so small.
+![](virtman3.png)
+
+In the next dialog box, disable storage for the VM
+![](virtman4.png)
+
+You can name the machine or leave it with a default value. Make sure to enable "Customize configuration before install"
+![](virtman5.png)
+
+Finally, we can configure our boot. Set your kernel path and initrd path to the `bzImage` and `initramfs.cpio.gz` files respectively. You'll also want to set your root to mount to `/dev/hda` or `/dev/sda` so your drives mount properly.
+![](virtman6.png)
+
+
+
+
 
 
