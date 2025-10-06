@@ -70,10 +70,10 @@ We'll then need to download BusyBox itself.
 $ git clone https://git.busybox.net/busybox/ && cd busybox
 $ git checkout origin/1_37_stable
 ```
-Using `make menuconfig`, we'll enable static binaries for the filesystem so it doesn't rely on our current OS for a particular library. 
+Using `make menuconfig`, we'll enable static binaries for the filesystem so it doesn't rely on our current OS for a particular library. We'll also have to disable the `tc` network package. Due to a change in modern kernels, BusyBox won't build if this package is enabled. 
 
 ![](makemenu.png)
-
+![](tc.png)
 **If you can't use `make menuconfig`**, there's a known error in some distributions when trying to detect one of your dependencies. You can edit the script that checks this dependency to fix the error manually.
 
 ```bash
