@@ -1,0 +1,6 @@
+[Unit]
+Description=Cat on catmorning file changed
+
+[Path]
+PathChanged=/home/%i/catmorning.txt
+Unit=catmorning@%i.service

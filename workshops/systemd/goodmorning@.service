@@ -1,0 +1,6 @@
+[Unit]
+Description=Echo %i into system logs
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c "echo %i"

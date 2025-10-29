@@ -1,0 +1,6 @@
+[Unit]
+Description=Cat a file to the service logs
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c "cat /home/%i/catmorning.txt"

@@ -1,0 +1,7 @@
+[Unit]
+Description=Echo %i into system logs
+
+[Timer]
+OnActiveSec=1
+OnUnitActiveSec=5
+Unit=goodmorning@%i.service
