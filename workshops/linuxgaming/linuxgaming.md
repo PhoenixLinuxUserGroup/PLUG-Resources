@@ -92,6 +92,7 @@ $ yay -S protontricks
 ### Usage
 Simply open Protontricks and select the game you want to tweak and click OK.
 ![My protontricks select screen](resources/protontricks.png)
+
 From here on out, what you need to do next varies based on the tweaks to apply. A common one is installing prerequisites, so we will install stuff as an example. By default, "select the default wineprefix" is selected, so click OK.
 ![Wineprefix select screen](resources/protontricks-2.png)
 Since we are installing prerequisites, we will select the top option and click OK.
@@ -173,6 +174,7 @@ For Arch and other distros, follow [this guide](https://lutris.net/downloads).
 >If you alraedy have Steam set up, that has already been set up and configured in Lutris. Steam games should be visible on your game library.
 
 To set up game stores, click on the store you wish to set up in the sidebar, then click on the user icon. Here, for example, we're setting up EA's app.
+
 ![Account Setup](resources/lutris-2.png)
 It will ask you to install your chosen client app. Click OK. It will then take you to an install screen. Click the install button for "`wine` standard" to continue.
 ![Install page](resources/lutris-3.png)
@@ -192,6 +194,7 @@ This is what MangoHud looks like when running in a game:
 ### `htop` and related programs
 `htop` allows you to see the usage of system resources and close apps. Launch it by running `htop` in a terminal.
 ![alt text](resources/htop.png)
+
 If you don't have it, here are install instructions:
 ```bash
 # Ubuntu/Debian
@@ -219,6 +222,7 @@ $ sudo apt install nvidia-driver-<version number>
 ```
 On Ubuntu, to select drivers, use the Software and Updates tool, and go to the `Additional Drivers` tab.
 ![Ubuntu Software and drivers](resources/ubuntudrivers.png)
+
 Unfortunately, in this screenshot, no drivers are needed, so it says no driver available. If drivers were available, it would list your GPU, and under it give you a selection of drivers. Select the one you just installed and click Apply Changes. It will take a while, but once done, NVIDIA drivers should be ready. Reboot your system to finish applying changes.
 
 After reboot, check if its working with:
