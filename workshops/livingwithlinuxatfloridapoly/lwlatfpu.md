@@ -199,10 +199,15 @@ Many features of Atmel Studio can be easily replicated in a standard text editor
 
 Here are the parameters from the screenshot you can copy from:
 Name: `Build & Upload to Board`
+
 Executable: `konsole`
+
 Arguments: `-e sh -c "/your/path/to/atmel-build.sh %{Document:FilePath}"`
+
 Mime types: `text/x-csrc`
+
 Save: `Current Document`
+
 (Optional) Editor command: `avrup`
 
 >[!IMPORTANT]
