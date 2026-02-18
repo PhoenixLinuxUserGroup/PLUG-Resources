@@ -26,7 +26,7 @@ Now that we have our OS's codename, we now need to grab a copy of WineHQ's keyri
 $ sudo mkdir -pm755 /etc/apt/keyrings
 $ wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo gpg --dearmor -o /etc/apt/keyrings/winehq-archive.key -
 ```
-If you are running Ubuntu 25.04 (Plucky Puffin) or older or Debian Trixie (version 13) or older, you are going to need to add 32-bit support. To accmplish this, run:
+If you are running Ubuntu 25.04 (Plucky Puffin) or older or Debian Trixie (version 13) or older, you are going to need to add 32-bit support. To accomplish this, run:
 
 ```bash
 $ sudo dpkg --add-architecture i386
@@ -101,7 +101,7 @@ Once the download completes, we're going to open it like we do on Windows. Since
 
 ![Wine updating](resources/updating.png)
 
-This window is setting up our build of Wine for first time use. It's creating a prefix, which is a folder in your home directory that stores a minimal replica of the Windows file structure. You can create as many of these as you would like, and some people crate them on a per-app basis. We will show you how to easily do this later.
+This window is setting up our build of Wine for first time use. It's creating a prefix, which is a folder in your home directory that stores a minimal replica of the Windows file structure. You can create as many of these as you would like, and some people create them on a per-app basis. We will show you how to easily do this later.
 
 Anyways, once it's done creating your prefix, we simply go thorugh the installation as per usual. Follow the installation instructions, like you would on Windows. 
 
