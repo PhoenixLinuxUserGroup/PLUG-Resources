@@ -8,6 +8,7 @@ Many apps are native to Linux, and by far are the easiest to download. About hal
 To see if a program is available natively, check if it is available in your package manager or see if the app's website offers a Linux download link and install instructions. It's best to look at the website first, and see the install instructions, especially for proprietary programs.
 ### Wine
 Wine is a pretty good option if there isn't a Linux build for your system. Many Windows apps can be run on Linux as if you are running it on Windows. In the last episode of Living With Linux, we covered how you can set up Wine and find compatible apps. You can read the readme for that workshop [here](https://github.com/PhoenixLinuxUserGroup/PLUG-Resources/blob/main/workshops/wine/wine.md).
+
 For brevity's sake, here are some key takeaways from that workshop that are relavant here:
 - Wine works by translating Windows API calls to Linux, rather than running a full copy of Windows under a virtual machine.
     - This method improves performance, but limits compatibility for many apps.
@@ -26,7 +27,8 @@ AppStream can be accessed by finding My Apps in MyFloridaPoly, or going to myapp
 >[!NOTE]
 >You may have noticed that the website you initially go to for these tools is a Microsoft website. In this case the Microsoft website is providing the shortcuts to these programs, and it also used to log you into the AppStream system.
 #### Winboat
-If you plan on being offline, or prefer running things locally, Winboat is an excellent choice. Winboat installs a full copy of Windows to a Docker image, and manages it for you so it is seamlessly integrated into your setup. It takes care of all of the Docker work for you, and even can install Windows for you! 
+If you plan on being offline, or prefer running things locally, Winboat is an excellent choice. Winboat installs a full copy of Windows to a Docker image, and manages it for you so it is seamlessly integrated into your setup. It takes care of all of the Docker work for you, and even can install Windows for you!
+
 Unfortunately, not every app runs on Winboat. GPU passthrough is not available, so if you plan on working with graphically intensive apps, you may run into poor performance. Additionally, it installs a full copy of Windows, so make sure you have a lot of disk space free to accomodate it, as well as any apps you will be running.
 >[!WARNING]
 >This software is still in beta. It won't work perfectly.
@@ -68,6 +70,7 @@ $ flatpak install org.kicad.KiCad
 Afterwards, you can just use it like you would on Windows.
 ### Example 3: Solidworks
 Solidworks is a parametric CAD modeling program produced by Dassault Systèmes. It's a key part of mechanical engineering, and all engineering majors at Poly have to interact with it at some point, especially through the Engineering Skills and Design course.
+
 It's also completely unavailable on Linux. It cannot be run on Wine, and being a 3D CAD program, Winboat can't run it, but luckily for us, it is available through AppStream.
 
 >[!WARNING]
@@ -124,6 +127,7 @@ It is available on AppStream, and you can access it similar to how you can acces
 ![Matlab on Linux](resources/matlab-1.png)
 
 Matlab is a scientific computing program that lets you write scipts to model systems mathematically. It also includes apps and tools that can help with modelling, such as Simulink which allows you to model systems using block diagrams. Many courses here at Poly use it, especially in the engineering departments.
+
 All Matlab apps are readily available natively on Linux. It requires a bit of work to set it up for use, but it's worth it.
 #### Installation
 To install Matlab, start by going to the [Mathworks website](https://mathworks.com). Click on the Sign in button. If you haven't already, create an account and set it up for academic use. Once you are signed in, Click on the Matlab button.
@@ -180,9 +184,11 @@ There is a web version of Autocad, which can run on any computer with a web brow
 ### Example 7: Atmel/Microchip Studio
 ![Atmel Studio](resources/atmelstudio.png)
 Atmel Studio is an IDE built on Microsoft Visual Studio, puropse built for writing code used on Atmel Microcontrollers with the AVR architecture. It combines the environment of Visual Studio 2015 with custom profiles, tools, and libraries designed for AVR CPUs. It is commonly used with the Microprocessors course here at Poly.
+
 Atmel Studio can run on Linux under Winboat, however, it is not as simple or as convenient as using it under other programs. To use it effectively, you need to configure USB passthrough on Winboat, which is currently an experimental feature.
 #### The Alternative Solution
 Many features of Atmel Studio can be easily replicated in a standard text editor. In this example, we will configure Kate, a text editor often bundled with KDE desktops. The main functionality we will restore is the ability to compile AVR C source code and upload it to an Arduino board. To do so, we will use a shell script to automate the build and upload process.
+
 - First, get a copy of the Arduino IDE, particularly via your package manager. You'll need this because it comes with two particularly important tools, `avrdude` and `avr-gcc`, as well as the `avr` libraries. These are the same tools Atmel Studio uses to accomplish this task.
 - Download the shell script. It is available [here](https://github.com/PhoenixLinuxUserGroup/PLUG-Resources/blob/main/workshops/livingwithlinuxatfloridapoly/atmel-build.sh).
 - Open Kate and go to Tools → External Tools → Configure
@@ -198,6 +204,7 @@ Many features of Atmel Studio can be easily replicated in a standard text editor
 ![Configuration](resources/kate-4.png)
 
 Here are the parameters from the screenshot you can copy from:
+
 Name: `Build & Upload to Board`
 
 Executable: `konsole`
