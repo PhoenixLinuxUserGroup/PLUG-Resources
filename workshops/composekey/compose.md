@@ -1,5 +1,5 @@
 # Living With Linux V: The Compose Key
-On other operating systems, there is generally some well documented method to type special characters. Windows has the character map, or directly typing in the Unicode character number (the latter of which is available on Linux). MacOS took an easier route, having you hold down a key and pressing a corresponding number. 
+On other operating systems, there is generally some well documented method to type special characters. Windows has the character map, or directly typing in the Unicode character number (the latter of which is available on Linux via `Control`+`Shift`+`U`). MacOS took an easier route, having you hold down a key and pressing a corresponding number. 
 
 On Linux, however, methods aren't very obvious, and not much discussion is made about how special characters can be typed. In this workshop, we will discuss the Compose Key system, an underrated feature of most Linux desktops.
 ## A Quick History Lesson
@@ -61,16 +61,16 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 ```
 This line includes your system-wide configuration file, since this will override it. Afterwards, you can add your custom configurations. To add a custom character, add a line in the following format:
 ```conf
-<MULTI_KEY> <keystroke_1> <keystroke_2> : "your custom character here"
+<Multi_key> <keystroke_1> <keystroke_2> : "your custom character here" # Comment about combination
 ```
 
-where `keystroke_1` and `keystroke_2` are the keystrokes needed to create your character.
-
->[!NOTE]
->You can have as many keystrokes as you would like, simply add something that looks like the `<keystroke_1>` blocks in the above example, replaced with the key you want to bind it to.
+where `keystroke_1` and `keystroke_2` are the keystrokes needed to create your character. The comment is required for your key combination to work. You can put anything there, but typically the name of the charcter is written.
 
 >[!TIP]
 >With custom configurations, you aren't limited to having it type one character, you can configure it to type whole strings of text. Simply place it between the two quotation marks and it will type it.
+
+>[!NOTE]
+>You can have as many keystrokes as you would like, simply add something that looks like the `<keystroke_1>` blocks in the above example, replaced with the key you want to bind it to.
 
 >[!IMPORTANT]
 >Characters on the keyboard that aren't a letter or number should be called by the first word of their name, rather then using their symbol when defining keystrokes. For example, `<` should be written as `less` instead.
@@ -78,7 +78,7 @@ where `keystroke_1` and `keystroke_2` are the keystrokes needed to create your c
 You can also define a symbol by its Unicode code point. Here, for example, we'll add the angle symbol, `∠`, whose Unicode code point is `U+2220`. You may still need to have the typed character in the quotation marks.
 
 ```conf
-<MULTI_KEY> <slash> <underscore> : "∠" U2220
+<Multi_key> <slash> <underscore> : "∠" U2220 # Angle symbol
 ```
 
 When you're done writing your config file, save it and log out of your desktop. Log back in again, and then your new config should work.
