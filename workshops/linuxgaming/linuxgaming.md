@@ -176,8 +176,10 @@ For Arch and other distros, follow [this guide](https://lutris.net/downloads).
 To set up game stores, click on the store you wish to set up in the sidebar, then click on the user icon. Here, for example, we're setting up EA's app.
 
 ![Account Setup](resources/lutris-2.png)
+
 It will ask you to install your chosen client app. Click OK. It will then take you to an install screen. Click the install button for "`wine` standard" to continue.
 ![Install page](resources/lutris-3.png)
+
 Once it's done installing, you will be prompted to log in. It will then add the games to your library. To install games, click on a game, click install, and follow its instructions. Remember to check its compatibility first.
 ## Monitoring performance
 If you want to know how well a game is running under Linux, use MangoHUD and `htop`. 
@@ -189,6 +191,7 @@ $ mangohud <game>
 ``` 
 You can also connect it to Lutris by adding it to the command prefix setting. Click on the up arrow next to the play button, and click configure. Go to the "System Options" tab and click "FPS counter (MangoHud)"
 ![alt text](resources/lutrisandmangohud.png)
+
 This is what MangoHud looks like when running in a game:
 ![MangoHud running in Kerbal Space Program, under Lutris](resources/mangohud.png)
 ### `htop` and related programs

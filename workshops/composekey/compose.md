@@ -26,6 +26,7 @@ Then enable the Compose Key, and select the key you wish to bind it to
 ![Enable Compose](resources/gnome-2.png)
 ### XFCE
 In your Applications menu, go to `Settings`→`Keyboard`.
+
 ![XFCE Keyboard Settings](resources/xfce-1.png)
 
 
