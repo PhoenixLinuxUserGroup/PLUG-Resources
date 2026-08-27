@@ -43,7 +43,7 @@ UTM lets you try Linux distros on a Mac and can both virtualize the OS and emula
 ![](resources/utm7.png)
 10. Now press any of the play buttons for your VM. A new window will open and your VM will boot. You will now be able to try out Linux on your Mac.
 ![](resources/utm8.png)
-![](resources/utm9.png)
+![wake up babe linux 2 dropped](resources/utm9.png)
 >[!NOTE]
 >This process is the same if you choose to emulate your OS, however you will select `Emulate` rather than `Virtualize`. Additionally, you may notice that you get more options on step 5, allowing you to choose what CPU architecture you'd like to emulate. The default option, `Intel ICH9 based PC (2009)` is the correct option, as it correlates to all PC based Linux distros.
 ## Installing on real hardware
@@ -69,4 +69,60 @@ Once you select your distro, it will begin to boot.
 >[!NOTE]
 >If your distro fails to boot, you may need to disable Secure Boot or enroll your distro's Platform Key. See [this guide](https://gadgetsfeed.com/how-to-enroll-platform-key-in-bios/) to learn how to enroll a Platform Key.
 ## The Anatomy of a standard Linux install
-This section will demonstrate how the average Linux install goes. Here, we'll be installing Mint, since it is a good representation of the average Linux installation.
+This section will demonstrate how the average Linux install goes. Here, we'll be installing Mint, since it is a good representation of the average Linux installation. So here's what you'll see when you boot into Linux for the first time:
+### 1. The boot menu
+Your distro comes with a boot menu, powered by GNU GRUB. If you're dual booting, expect to see this menu everytime you start your computer, as it will be used to switch you between Linux and Windows. You can interact with this menu using the arrow keys and `Enter` key. It will automatically skip and choose the default option if you do nothing in 5-10 seconds.
+![GRUB my beloved](resources/boot.png)
+### 2. Boot screens and verbose mode
+This is the most unremarkable part of the boot sequence. Depending on your distro, it will either be your distro's logo or something completely new and different: verbose mode. Here on Mint, the ISO file boots using verbose mode. Verbose mode allows you to find out if your distro is having trouble booting, because it tells you what it's trying to do that's getting it stuck. If everything is going well, a ton of text should fly by quickly.
+![Verbose mode](resources/verbose.png)
+>[!TIP]
+>If your distro shows a proper boot screen, and you want to see verbose mode, you can press `Esc` to toggle between the boot screen and the verbose mode log.
+### 3. The desktop
+Now that that's done, we get access to the full desktop. Here, you have free reign over the distro and get to try it before installing it to your computer. Since we're installing this OS, we'll click on the `Install Linux Mint` on our desktop.
+>[!Caution]
+>Any data at this stage doesn't get saved, as the OS is running of your computer's RAM.
+
+>[!NOTE]
+>Not all distros take you straight to the desktop. Ubuntu, for example presents you with the language, keyboard and internet setup menus before giving you the choice to try the distro.
+
+![The desktop](resources/desktop.png)
+### 4. The installer
+Now we get to the fun part, and get to install Linux! The installer will ask a bunch of questions and get you through the process. In this case, the process is as follows:
+1. Choose a language. On Mint, they just list languages on the menu on the left side. Select one and click continue.
+![Select your language](resources/language.png)
+2. Choose a keyboard layout. The left menu allows you to select your keyboard's language and the right menu is your specific layout. You also get a space to test out you keyboard with. If you're uncertain about your exact layout, you can have it detect it automatically by clicking `Detect Keyboard Layout`. It will ask you to press keys to determine keyboard layout and ask if you have certain keys on your keyboard. When you're done, click `Continue`
+![Keyboard layouts](resources/keyboard.png)
+3. Decide if you want multimedia codecs. Since they may not be able to bundle multimedia codecs with the OS, they give you the option to install them. Check the box if you need these codecs and click `Continue`.
+![Codecs](resources/codecs.png)
+4. Format and repartition your HDD/SSD. This is basically the point of no return when installing Linux. In this example, we're using a VM with an empty drive. Thus, we only can choose between erasing it completely or something else (which will let us choose how much storage space you want it to take up). Had we had another OS on there, it would also give us the option to set up dual booting, and may let us set up how much space Linux should take up.
+![Deleting drives](resources/drives.png)
+>[!CAUTION]
+>As your OS will tell you, any data on your drive will be deleted, especially if you've chosen to completely replace your OS with Linux. Please ensure that you've backed up all of your important data before proceeding.
+
+Once you're ready to go, click `Install Now`. You'll then get the following message, asking you to confirm you are fine with having your hard drive wiped so you can install Linux:
+![Confirmation](resources/confirmation.png)
+Click `Continue` if you're cool with the changes it is about to make. Linux will then be installed.
+5. Choose your time zone. While it's installing, it will guide you through setting up your system.
+6. Create your user acocunt/password. Fill out the form to set up your account. This account is local to your computer only. Additionally, you can choose to have it log you in automatically, so you can get to your desktop faster. You will still need to remember your password when installing apps.
+>[!TIP]
+>The username and computer name will be automatically filled when you type in your name. If you're fine with the default names, you can simply click `Continue`.
+
+7. Installation time! It will start installing Linux on your freshly wiped hard drive. This will take a while, depending on your hardware. Once done, it'll let you know.
+
+![Installation](resources/installation.png)
+
+### 5. Finishing installs
+When installation finishes, it will prompt you to reboot. Choose `Restart Now` to continue.
+![Reboot](resources/reboot.png)
+It will then tell you to remove your install media (i.e. your flash drive) and hit `Enter`. If you're doing this on a VM, simply hit `Enter`. Your VM app will eject the ISO for you.
+![Final Reboot message](resources/finalreboot.png)
+
+### 6. Welcome to Linux!
+When you're finished, you'll get a login screen. Type in your password and hit enter. You'll be sent straight to your new desktop!
+![Login](resources/login.png)
+You may even see a welcome program show up, depending on your distro. It will give you a tour of the desktop and allow you to customize your experience.
+![Welcome](resources/welcome.png)
+
+## Conclusion
+With that being said, you're now officially a Linux user! In the coming weeks, we'll be going over what you can do with this OS and how you can accomplish certain daily tasks on Linux. In future episodes of Living With Linux, we'll go over how you can run Windows apps and games on Linux, so stick around for more!
