@@ -69,4 +69,4 @@ Once you select your distro, it will begin to boot.
 >[!NOTE]
 >If your distro fails to boot, you may need to disable Secure Boot or enroll your distro's Platform Key. See [this guide](https://gadgetsfeed.com/how-to-enroll-platform-key-in-bios/) to learn how to enroll a Platform Key.
 ## The Anatomy of a standard Linux install
-This section will 
+This section will demonstrate how the average Linux install goes. Here, we'll be installing Mint, since it is a good representation of the average Linux installation.
