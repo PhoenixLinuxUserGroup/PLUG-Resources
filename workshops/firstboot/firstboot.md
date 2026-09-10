@@ -53,12 +53,14 @@ If you're installing on your actual computer instead of a VM, you'll need to to 
 ### Flashing using balenaEtcher
 Etcher is a flashing program available for all platorms (Windows, Mac and Linux) that easily allows you to create your flash drive. 
 ![Etcher](resources/etcher.png)
+
 To flash to your drive using Etcher, simply open it, select your `.iso`, select your flash drive and click `Flash`.
 It will take a few minutes to get your file onto the drive and validate it. When it's done, you're ready to go!
 ### Flashing using Rufus
 Rufus is a similar program, but it is only available on Windows. It has a similar UI to the Windows disk formatting utility, and gives you more options than Etcher.
 To flash using Rufus, download and open it. It will ask you if you would like to update, and may also ask if you would like to update `DBX` files. Choose an option to continue.
 ![Rufus](resources/rufus.png)
+
 Once we're past that, select your device and '.iso' file. Press start and wait for it to finish. Similar to etcher, when it's done, you're ready to go!
 ### Booting
 To boot off of your flash drive, reboot your computer. When it shuts down, spam your computer's boot menu key (usually `F9`). You'll then be presented with the boot menu, from which you'll select your flash drive. It will most likely be the option with your distro's name.
@@ -89,12 +91,16 @@ Now that that's done, we get access to the full desktop. Here, you have free rei
 ![The desktop](resources/desktop.png)
 ### 4. The installer
 Now we get to the fun part, and get to install Linux! The installer will ask a bunch of questions and get you through the process. In this case, the process is as follows:
+
 1. Choose a language. On Mint, they just list languages on the menu on the left side. Select one and click continue.
 ![Select your language](resources/language.png)
+
 2. Choose a keyboard layout. The left menu allows you to select your keyboard's language and the right menu is your specific layout. You also get a space to test out you keyboard with. If you're uncertain about your exact layout, you can have it detect it automatically by clicking `Detect Keyboard Layout`. It will ask you to press keys to determine keyboard layout and ask if you have certain keys on your keyboard. When you're done, click `Continue`
 ![Keyboard layouts](resources/keyboard.png)
+
 3. Decide if you want multimedia codecs. Since they may not be able to bundle multimedia codecs with the OS, they give you the option to install them. Check the box if you need these codecs and click `Continue`.
 ![Codecs](resources/codecs.png)
+
 4. Format and repartition your HDD/SSD. This is basically the point of no return when installing Linux. In this example, we're using a VM with an empty drive. Thus, we only can choose between erasing it completely or something else (which will let us choose how much storage space you want it to take up). Had we had another OS on there, it would also give us the option to set up dual booting, and may let us set up how much space Linux should take up.
 ![Deleting drives](resources/drives.png)
 >[!CAUTION]
@@ -103,7 +109,9 @@ Now we get to the fun part, and get to install Linux! The installer will ask a b
 Once you're ready to go, click `Install Now`. You'll then get the following message, asking you to confirm you are fine with having your hard drive wiped so you can install Linux:
 ![Confirmation](resources/confirmation.png)
 Click `Continue` if you're cool with the changes it is about to make. Linux will then be installed.
+
 5. Choose your time zone. While it's installing, it will guide you through setting up your system.
+
 6. Create your user acocunt/password. Fill out the form to set up your account. This account is local to your computer only. Additionally, you can choose to have it log you in automatically, so you can get to your desktop faster. You will still need to remember your password when installing apps.
 >[!TIP]
 >The username and computer name will be automatically filled when you type in your name. If you're fine with the default names, you can simply click `Continue`.
