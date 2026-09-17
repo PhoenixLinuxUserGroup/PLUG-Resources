@@ -27,7 +27,7 @@ To install from here, you can hover over the card with what you're looking for, 
 >[!Caution]
 >These customizations aren't tested for stability or quality, either by KDE or your distro's provider. Your system may not reliably work under these customizations. Additionally, global themes may contain malware or other executables, so be careful when trying these themes.
 #### Messing with installed themes
-Once we've installed our theme it will show up on the list of available themes. Click on it, and it will ask you how you want the theme to be applied. In this example, I chose one that makes my system look like MacOS Big Sur. To get the full effect, check off `Desktop & Window Layout` and click `Apply`. Note that in the following sccreenshot, I showed my full desktop to demonstrate the change.
+Once we've installed our theme it will show up on the list of available themes. Click on it, and it will ask you how you want the theme to be applied. In this example, I chose one that makes my system look like MacOS Big Sur. To get the full effect, check off `Desktop & Window Layout` and click `Apply`. Note that in the following screenshot, I showed my full desktop to demonstrate the change.
 
 ![Before](resources/themebefore.png)
 
@@ -148,7 +148,7 @@ Using the `Add/Remove` tab, we can download new themes.
 ![add/remove](resources/addrm.png)
 
 >[!TIP]
->Clicking on an item and clicking the lightbulb icon will take you to the [Cinnamon spices](cinnamon-spices.linuxmint.com) page for your selected item, to give you more information and previews. This is where the items are sourced from.
+>Clicking on an item and clicking the lightbulb icon will take you to the [Cinnamon spices](https://cinnamon-spices.linuxmint.com) page for your selected item, to give you more information and previews. This is where the items are sourced from.
 ## Customizing GRUB
 We've customized literally everything at this point, but we're still missing something. Recall from the first event this:
 > Your distro comes with a boot menu, powered by GNU GRUB. If you're dual booting, expect to see this menu everytime you start your computer, as it will be used to switch you between Linux and Windows. You can interact with this menu using the arrow keys and `Enter` key. It will automatically skip and choose the default option if you do nothing in 5-10 seconds.
@@ -166,6 +166,7 @@ Commands may vary by theme pack, but the following command should work:
 sudo ./install.sh
 ```
 Now, we can reboot and see what happened!
+
 ![Shrunken GRUB](resources/grub2.png)
 
 Unfortunately, it looks like our VM shrunk it down to 640X480, but the point still stands, and we successfully installed a GRUB theme!

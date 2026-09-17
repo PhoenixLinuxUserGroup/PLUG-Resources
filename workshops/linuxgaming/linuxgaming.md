@@ -1,4 +1,4 @@
-# Living With Linux I: Gaming
+# Living With Linux II: Gaming
 One issue that many people run into when moving to Linux is compatibility with their favorite games and software. Luckily, tools exist which allow people facing this issue to rectify it. In this workshop, we will be going over these tools to work around these problems.
 >[!WARNING]
 >This workshop is written under the assumption that you are running Linux on physical hardware or have passed a graphics card through to your VM. Games running under virtual machines may not perform well, since virtual machines generally use software-based rendering to handle graphics. If you are testing games in a VM, we recomment you choose lighter/older games for optimal performance.
@@ -25,27 +25,13 @@ sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
 ```bash
 sudo dnf install steam -y
 ```
-#### Arch
-See the [official Arch Wiki article](https://wiki.archlinux.org/title/Steam) on the topic for more complete install instructions.
-##### Enable multilib if you haven't already
-In your favorite text editor, open `/etc/pacman.conf`
-Uncomment the following section or add it if it doesn't exist:
-```conf
-[multilib]
-Include = /etc/pacman.d/mirrorlist
-```
-##### Install Steam
-Run this in the terminal:
-```bash
-$ sudo pacman -Syu steam
-```
 #### Other distros
-Check your distro's package manager for `steam` or `steam-installer`. If you are using a gaming focused distro, such as Bazzite or ChimeraOS, you likely already have steam installed and configured. If Steam isn't available, go to the [Steam Download page](https://store.steampowered.com/about/download).
+Check your distro's package manager for `steam` or `steam-installer`. If you are using a gaming focused distro, such as Bazzite or Nobara, you likely already have steam installed and configured. If Steam isn't available, go to the [Steam Download page](https://store.steampowered.com/about/download).
 
 ### Configuring Steam
 Now that Steam is installed, find it in your desktop's app launcher. Just like on other OSes, it will ask you to log in. Do this as you would for any OS. Once logged in, Proton should be enabled by default, set to run under Proton Experimental.
 >[!NOTE]
->Up until recently, Proton was an opt-in system. It is possible that it may be disabled on your system. To check it, go to `Steam`>`Settings`>`Compatibility`. If it says `Steam Play is enabled for all titles`, you're good to go! To enable it, follow the steps [in this guide](https://www.educba.com/steam-ubuntu/)
+>Up until about 2025, Proton was an opt-in system. It is possible that it may be disabled on your system. To check it, go to `Steam`>`Settings`>`Compatibility`. If it says `Steam Play is enabled for all titles`, you're good to go! To enable it, follow the steps [in this guide](https://www.educba.com/steam-ubuntu/)
 ### Game compatibility and testing out Proton
 #### Using Steam Deck Compatibility indicators
 To test out Proton and Steam, go to your Library and find a game you want to try on Linux. A general indicator of Linux support is the Steam Deck support section on the store page of the game. Below is an example of a Windows game with excellent Linux support (Warframe). Steam deck compatiblity indicators are highlited with green arrows.
@@ -69,11 +55,19 @@ Additionally, there's a "click play" score, which rates how well a game will run
 For example, here's Warframe's ProtonDB page:
 ![Warframe's ProtonDB score](resources/protondbwarframe.png)
 As shown here, Warframe is gold rated, indicating excellent Linux support, but some may need to tweak it first based on their system.
+#### Are We Anti-Cheat Yet?
+The biggest issue with Linux gaming support is the general lack of support for online and e-sports titles. Games like *Fortnite*, *Apex Legends* and *Valorant* are completely unsupported on Linux, as the developers of these games use a kernel-level anti cheat system. As the name suggests, the game installs a driver at the kernel level whose whole job is to look at what you have running on your system, and verify that no game hacking tools are running. Obviously, by installing a kernel-level driver for Windows on a Linux system will not work, especially using Proton, which is only *translating* the API calls of the Windows OS. Now, this isn't true for all games, as many anticheats do offer a version that does not include these kernel drivers, leaving the option to the game's developers.
+This brings up an interesting question: Which games do or don't work on Linux? Luckily for us, there's a website for that! areweanticheatyet.com lists the compatibility of games on Linux based on their anti-cheat compatibility. It uses a rating system that simply tells you whether the game is supported, runs or does not work at all.
+
+![Are We Anticheat Yet](resources/awacy.png)
+
+As you can see, a majority of the games are unsupported, due to the use of anticheat. In the case of the more popular online games, Linux is outright denied. Ultimately, games that are listed as `Running` or `Supported` will run just fine under Linux.
 #### General Rules of Thumb
 In addition to the compatibility scores, some rules of thumb can also be applied. These include:
 - Is the game an online game, using a Kernel Level Anti-Cheat system? If so, don't expect it to work.
 - Is the game known for having good Linux support? If so, you should be good to go.
 - Is there not a native Linux build for this game? If so, make sure to look over ProtonDB and go from there.
+
 If all of this checks out, go ahead and install the game from your library. The Steam client will install Proton for you.
 ## Protontricks
 If you need to apply some tweaks to your game as directed by ProtonDB, you might be asked to go use Protontricks. Protontricks is a special build of Winetricks, developed specifically for the Steam client.
@@ -83,11 +77,6 @@ If you need to apply some tweaks to your game as directed by ProtonDB, you might
 $ sudo apt install protontricks
 # Fedora
 $ dnf install protontricks
-```
-#### Arch installation
-Make sure you can install packages off the [AUR](https://wiki.archlinux.org/title/Arch_User_Repository). This is an AUR package.
-```bash
-$ yay -S protontricks
 ```
 ### Usage
 Simply open Protontricks and select the game you want to tweak and click OK.
@@ -111,8 +100,6 @@ Install Flatpak using the install command for your distro:
 $ sudo apt install flatpak
 ## Fedora 
 $ sudo dnf install flatpak
-## Arch
-$ sudo pacman -S flatpak
 ```
 If your distro isn't here, check [the official Flatpak setup guide.](https://flatpak.org/setup/)
 Once installed, we then need to set it to use the Flathub repo, where all the software is. Run this command to do that:
@@ -128,7 +115,7 @@ $ flatpak install flathub io.github.kolunmi.Bazaar
 ### Game clients and emulators available through Flatpak
 Below are some programs available on Flatpak that are worth checking out
 #### Super Tux Kart
-This is a Mario Kart style game, but with characters from all your favorite open source franchises! It has a storymode, singleplayer mode and various multiplayer modes. Our next workshop will be about this game, so check it out!
+This is a Mario Kart style game, but with characters from all your favorite open source franchises! It has a storymode, singleplayer mode and various multiplayer modes. We'll be having a game night with this at the end of the semester, so check it out!
 ![Super Tux Kart's Storymode](resources/stk.png)
 Install it with
 ```bash
@@ -136,7 +123,7 @@ $ flatpak install flathub net.supertuxkart.SuperTuxKart
 ```
 or find it in your package manager.
 #### Sober
-This is an unofficial client for Roblox. Up until last year, Roblox's client was playable under Proton/Wine, but that is no longer the case. This restores that functionality by using the Android build of Roblox. It sets it up so that the experience is identical to the Windows versions. It is only available on Flatpak.
+This is an unofficial client for Roblox. Up until early 2024, Roblox's client was playable under Proton/Wine, but that is no longer the case due to the use of anti-cheat. This restores that functionality by using the Android build of Roblox. It sets it up so that the experience is identical to the Windows versions. It is only available on Flatpak.
 >[!CAUTION]
 >This software is highly experimental, and not fully open source to reduce it being used for hacking the game. It may not work during large events on Roblox, where security is temporarily tightened.
 
@@ -146,7 +133,7 @@ Install it with
 $ flatpak install --user flathub org.vinegarhq.Sober
 ```
 #### RetroArch
-RetroArch allows you to run games on various emulators. It allows you to select a ROM (known internally as "content") and an emulator to run it in (known internally as a "core"). It is easy to set up and has an interface that fully supports controllers
+RetroArch allows you to run games on various emulators. It allows you to select a ROM (known internally as "content") and an emulator to run it in (known internally as a "core"). It is easy to set up and has an interface that fully supports controllers.
 >[!IMPORTANT]
 >Please use ROMs for games you already own.
 
@@ -161,12 +148,10 @@ Lutris allows you to apply the same things Steam does for Proton, but for games 
 ### Installation
 It's available via Flatpak, but you can get it from your system's package manager. Install it with the following commands:
 ```bash
-# Ubuntu/Debian
+# Ubuntu/Debian/Mint
 $ sudo apt install lutris
 # Fedora
 $ sudo dnf install lutris
-# Flatpak
-$ flatpak install flathub --user -y net.lutris.Lutris
 ```
 For Arch and other distros, follow [this guide](https://lutris.net/downloads).
 ### Configuration and setting up games
@@ -200,7 +185,7 @@ This is what MangoHud looks like when running in a game:
 
 If you don't have it, here are install instructions:
 ```bash
-# Ubuntu/Debian
+# Ubuntu/Debian/Mint
 $ sudo apt install htop
 # Fedora
 $ sudo dnf install htop
@@ -258,8 +243,6 @@ If you need CUDA support, install the following:
 $ sudo dnf install xorg-x11-drv-nvidia-cuda
 ```
 Follow [this guide](https://rpmfusion.org/Howto/NVIDIA) for more info.
-#### Arch
-Refer to [this guide](https://linuxconfig.org/arch-linux-nvidia-drivers-installation) for installation instructions.
 ### AMD
 From personal experience, you rarely need to install drivers for AMD cards, as the Open Source versions often bundled with your distro are good enough for most use cases, including gaming. But in the rare case you do (for exampe you need ROCm/OpenCL support), here is the install guide:
 [AMD official Linux Install instructions](https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.2.4/install/amdgpu-install.html)
@@ -283,8 +266,6 @@ If you have multiple controllers connected, use the Device dropdown to choose yo
 If you prefer using the terminal or don't have KDE Plasma, `jstest` is a better option. This is done entirely in a terminal.
 #### Ubuntu installation
 Run `$ sudo apt install joystick` in a terminal
-#### Arch installation
-Run `$ sudo pacman -Syu joyutils` in a terminal
 #### Finding your controller
 Make sure your controller is connected. You can check by going into the terminal and running the following:
 ```bash
