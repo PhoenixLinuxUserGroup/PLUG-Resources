@@ -1,9 +1,10 @@
 # Living With Linux III: Using Wine to run Windows apps
-A common issue many have when switching to Linux is the lack of support for their favorite apps. Thankfully, we have tools to help ease the pain. In this lab, we will be setting up `Wine` along with other tools, which lets you run many Windows apps under Linux. We will also demonstrate many apps taht work under Wine.
+A common issue many have when switching to Linux is the lack of support for their favorite apps. Thankfully, we have tools to help ease the pain. In this lab, we will be setting up `Wine` along with other tools, which lets you run many Windows apps under Linux. We will also demonstrate some apps that work under Wine.
 ## What Is Wine?
 Wine is a program that allows Windows apps to run on Linux. It used to be an acronym for "Wine Is Not an Emulator", and was introduced in 1993 to make Windows 3.1 software compatible with Linux. It isn't considered an emulator, because instead of running a copy of Windows in a VM, it translates the Windows API calls needed by the progams into Linux API calls. This does limit the kinds of apps it can run and how well they run, but the support gets better every update. 
 
-Wine has become the basis of many other compatibility layers, which include improvements designed for specific needs, such as gaming. If you recall from the Gaming workshop, Valve's Proton (included with Linux builds of Steam), is built entirely on Wine. While these forks can be used for regular, everyday tasks, just like Wine (and sometimes may run even better), 
+Wine has become the basis of many other compatibility layers, which include improvements designed for specific needs, such as gaming. If you recall from the [Gaming workshop](/workshops/linuxgaming/linuxgaming.md), Valve's Proton (included with Linux builds of Steam), is built entirely on Wine. While these forks can be used for regular, everyday tasks, just like Wine (and sometimes may run even better), Wine is oftentimes more convenient, as it integrates apps as if you were using Windows (Wine allows you to open `.exe` files from your file manager straight out of the box).
+
 ## Installation
 >[!WARNING]
 >Many distros vary which version of Wine they carry on their package repositories. An app that may be compatible with one build of Wine can be completely broken on another. Later on, we will introduce Bottles, which can allow you to select versions easily without shopping around.
@@ -35,7 +36,7 @@ $ sudo dpkg --add-architecture i386
 Now we can finally add the repository. Run the command below that fits which distro you're using, but replace anything with `<codename>` with your distro's codename:
 
 ```bash
-## For Ubuntu
+## For Ubuntu & Mint
 $ sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/<codename>/winehq-<codename>.sources
 
 ## For Debian
@@ -60,7 +61,7 @@ $ sudo apt install --install-recommends winehq-stable
 APT will then list the amount of storage space needed and how much you have available, as well as a summary of what's being installed. If you're fine with it, press `Enter`. If not, type `N` and press `Enter`. Afterwards, it should install, and you will be good to go!
 
 ### Fedora, Bazzite and related distros
-Thankfully, Fedora is a whole lot simpler to install, start by adding the repository for your version by running the following command, replacing `<version-number>` with your version.
+Thankfully, Fedora's installation process is a whole lot simpler. Start by adding the repository for your version by running the following command, replacing `<version-number>` with your version.
 ```bash
 $ sudo dnf config-manager addrepo --from-repofile=https://dl.winehq.org/wine-builds/fedora/<version-number>/winehq.repo
 ```
@@ -82,6 +83,7 @@ Now that Wine has installed, we now need to go over how we can find apps that ar
 
 
 ![WineHQ's AppDB](resources/WineHQ-WineApplicationDatabase.png)
+
 Apps are rated with the following categories:
 
 |Rating |Meaning|
@@ -97,11 +99,11 @@ Now that we know how we can find apps, let's install one. As an example, I'm goi
 
 ![LTspice website](resources/ltspice-1.png)
 
-Once the download completes, we're going to open it like we do on Windows. Since this is likely the first app your wine configuration is using, loading may take a while. During this time, you may see a window that looks like this:
+Once the download completes, we're going to open it like we do on Windows. Since this is likely the first app your wine installation is using, loading may take a while. During this time, you may see a window that looks like this:
 
 ![Wine updating](resources/updating.png)
 
-This window is setting up our build of Wine for first time use. It's creating a prefix, which is a folder in your home directory that stores a minimal replica of the Windows file structure. You can create as many of these as you would like, and some people create them on a per-app basis. We will show you how to easily do this later.
+Here, WINE is setting us up for first time use. It's creating a prefix, which is a folder in your home directory that stores a minimal replica of the Windows file structure. You can create as many of these as you would like, and some people (and programs) create them on a per-app basis. We will show you how to easily do this later.
 
 Anyways, once it's done creating your prefix, we simply go thorugh the installation as per usual. Follow the installation instructions, like you would on Windows. 
 
@@ -123,9 +125,11 @@ $ flatpak install bottles
 ```
 ### Adding apps in Bottles (Example 2: FL Studio)
 To add a progam to Bottles, click either the "create new" button or the + button in the top left corner.
+
 ![Add to Bottles](resources/bottles-1.png)
 
 Name it and choose your use-case. Here you can also choose which build of Wine it will use, as well as where it will go. Click Create when ready.
+
 ![Configuration](resources/bottles-2.png)
 
 It will then take some time to create the bottle
@@ -206,10 +210,11 @@ This will open the utility, which lets you do some customization to your Wine bu
 >Winecfg can be run from the terminal. Simply type `winecfg` into the terminal to run it.
 
 ## Installations with Extra Steps (Example 3: PTC Mathcad)
-To demonstrate what Winetricks can really do, let's install an app that needs a lot of tweaking in order to run: Mathcad. Mathcad is a program that allows you to write math equations on a virtual piece of paper, and have your computer automatically evaluate them. Unfortunately for this example, the installer file is only available if you request the demo, which needs you to give them an email address. In the case of this example, we will assume we already have the installer. That is to say, this is not an example worth following, unless you also have the installer
+To demonstrate what Winetricks can really do, let's install an app that needs a lot of tweaking in order to run: Mathcad. Mathcad is a program that allows you to write math equations on a virtual piece of paper, and have your computer automatically evaluate them. Unfortunately for this example, the installer file is only available if you request the demo, which needs you to give them an email address. In the case of this example, we will assume we already have the installer. That is to say, this is not an example worth following, unless you also have the installer file. Additionally, it won't be perfect running under WINE.
 
-We will start in Winetricks, and we will follow our Install Prerequisites instructions. Mathcad needs .NET 4.8, so we will select that.
-![Installing dotnet](resources/mathcad-1.png)
+We will start in Winetricks, and we will follow our Install Prerequisites instructions. Mathcad needs .NET 10 or newer, so we will select that.
+
+![Installing dotnet. Yes this screenshot is old, Mathcad formerly used .NET 4.8.](resources/mathcad-1.png)
 
 Then we will run the installer. Follow its instructions.
 
@@ -220,3 +225,8 @@ After the installer is done, we need to modify the software in Winecfg to make i
 
 Once this is done we can run Mathcad.
 ![Mathcad](resources/mathcad-2.png)
+
+It is worthy of note that this doesn't run like it would on Windows. In my testing, I found that it has some graphical glitches and refuses to calculate equations after a while, especially if you use it's dimensional analysis features. This makes it a somewhat perfect demonstration of Wine's limitations. As time goes on, things may get better and it may get better compatibility in future.
+
+## Conclusion
+In this workshop, we've shown that it's possible to run Windows apps on Linux under WINE. While not a perfect solution, the fact that you can run Windows apps on Linux at all may save you some time if you're dual-booting Linux. In the next workshop, we'll apply this knowledge to running apps for your classes.
