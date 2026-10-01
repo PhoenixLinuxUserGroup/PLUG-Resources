@@ -13,23 +13,25 @@ For brevity's sake, here are some key takeaways from that workshop that are rela
 - Wine works by translating Windows API calls to Linux, rather than running a full copy of Windows under a virtual machine.
     - This method improves performance, but limits compatibility for many apps.
     - Install wine using either your package manager or [refer to their official install gude](https://gitlab.winehq.org/wine/wine/-/wikis/Download) to obtain more up-to-date builds.
-- Use appdb.winehq.org to find out if your app is compatible with wine.
+- Use [appdb.winehq.org](appdb.winehq.org) to find out if your app is compatible with wine.
     - AppDB ratings are crowdsourced, and include more detailed instructions on workarounds to major issues.
     - Platinum and Gold rated apps will work very well with Wine, and should present few issues.
 - Winetricks gives you access to utilities and installers to make troubleshooting easier.
     - Install it from your distro's package manager
-### Running it in a VM: Amazon AppStream and Winboat
+### Running it in a VM: The Windows app and Winboat
 If all else fails, and your app is incompatible with wine, there are options that allow you to run these apps with Linux. These solutions involve running your app in a virtual machine under a real copy of Windows.
-#### Amazon AppStream
-AppStream is a service that Amazon offers through Amazon Web Services (AWS). Florida Poly has access to this service, and most of the apps available on the school's computers are available through this service. All apps are run in a virtual machine in an AWS datacenter, and streamed back to your computer via your web browser. Additionally, since all of these apps are from Florida Poly's app library, any paywalls or licensing issues have been taken care of for you, so you don't have to deal with any subscriptions or limited trial versions. Since this is not running locally, there are no features to pass through devices other than cameras, microphones, mice and keyboards, so apps used to program hardware such as Atmel/Microchip Studio are unavailable here. Additionally, keep in mind that an internet connection is required at all times when using this service, so if you plan on working without internet or AWS goes down, AppStream will not work.
-##### Accessing AppStream
-AppStream can be accessed by finding My Apps in MyFloridaPoly, or going to myapps.microsoft.com and logging into your school email. You can then select the app you need to use, and it will take you to AppStream. You may need to select your app again, but once you do, it will start your VM, and ask you to log in to your account. Use the password to your school email to continue, and you will be good to go. We will give more detailed instructions once we get to our examples, including more information on how to use the VM.
+#### The Windows App
+The Windows app is a service that Microsoft offers through OneDrive. Florida Poly has access to this service, and most of the apps available on the school's computers are available through this service. All apps are run in a virtual machine in an Microsoft datacenter, and streamed back to your computer via your web browser. Additionally, since all of these apps are from Florida Poly's app library, any paywalls or licensing issues have been taken care of for you, so you don't have to deal with any subscriptions or limited trial versions. Since this is not running locally, there are no features to pass through devices, so apps used to program hardware such as Atmel/Microchip Studio are unavailable here. Additionally, keep in mind that an internet connection is required at all times when using this service, so if you plan on working without internet or Microsoft's datacenters go down, the Windows app will not work.
+##### Accessing the Windows app
+The Windows app can be accessed by finding My Apps in MyFloridaPoly, or going to [myapps.microsoft.com](myapps.microsoft.com) and logging into your school email. You can then select the app you need to use, and it will take you to the Windows app. You will need to select your app again, but once you do, it will start your VM and you will be good to go. We will give more detailed instructions once we get to our examples, including more information on how to use the VM.
+
 >[!NOTE]
->You may have noticed that the website you initially go to for these tools is a Microsoft website. In this case the Microsoft website is providing the shortcuts to these programs, and it also used to log you into the AppStream system.
+> This seems to be the official method to access licensed software on personal devices, regardless of OS.
+
 #### Winboat
 If you plan on being offline, or prefer running things locally, Winboat is an excellent choice. Winboat installs a full copy of Windows to a Docker image, and manages it for you so it is seamlessly integrated into your setup. It takes care of all of the Docker work for you, and even can install Windows for you!
 
-Unfortunately, not every app runs on Winboat. GPU passthrough is not available, so if you plan on working with graphically intensive apps, you may run into poor performance. Additionally, it installs a full copy of Windows, so make sure you have a lot of disk space free to accomodate it, as well as any apps you will be running.
+Unfortunately, not every app runs on Winboat. GPU passthrough and 3D acceleration is not available, so if you plan on working with graphically intensive apps, you may run into poor performance. Additionally, it installs a full copy of Windows, so make sure you have a lot of disk space free to accomodate it, as well as any apps you will be running.
 >[!WARNING]
 >This software is still in beta. It won't work perfectly.
 ##### Installation
@@ -71,58 +73,43 @@ Afterwards, you can just use it like you would on Windows.
 ### Example 3: Solidworks
 Solidworks is a parametric CAD modeling program produced by Dassault Systèmes. It's a key part of mechanical engineering, and all engineering majors at Poly have to interact with it at some point, especially through the Engineering Skills and Design course.
 
-It's also completely unavailable on Linux. It cannot be run on Wine, and being a 3D CAD program, Winboat can't run it, but luckily for us, it is available through AppStream.
+It's also completely unavailable on Linux. It cannot be run on Wine, and being a 3D CAD program, Winboat can't run it, but luckily for us, it is available through the Windows app.
 
 >[!WARNING]
->AppStream might not always carry the latest versions of apps. Programs like Solidworks may give you issues if you upload files from a later version into an older build of it.
-#### Accessing Solidworks on Linux and How to Use AppStream
+>the Windows app might not always carry the latest versions of apps. Programs like Solidworks may give you issues if you upload files from a later version into an older build of it.
+#### Accessing Solidworks on Linux and How to Use the Windows app
 We'll start at [My Apps](myapps.microsoft.com). You may need to sign in to your school email first. We will then select Solidworks.
 ![My Apps](resources/solidworks-1.png)
 
-This will log you in to AppStream. Afterwards, it will ask you to select your app again. 
+This will open a new tab with the Windows app. Afterwards, it will ask you to select your app again. 
 ![Selecting Solidworks](resources/solidworks-2.png)
 
-After that, it will reserve your VM. It will take a minute or two, especially for larger programs like Solidworks. Once it's ready, it will ask you to sign in. Sign in with your school email password. Afterwards, it will connect you to the VM and open Solidworks.
+It may also ask you about alternative keyboard layouts. Click `Connect` if the settings look good.
 
->[!TIP]
->If you give AppStream notification permissions, you can put the tab in the background and it will notify you when your VM is ready.
+![Other settings](resources/solidworks-2a.png)
 
-![Solidworks in Appstream](resources/solidworks-3.png)
+It will also ask you to sign in, which will open a new tab asking for your permission to connect your school email to the VM.
+
+![Permissions](resources/solidworks-2b.png)
+
+Afterwards, it will connect you to the VM and open Solidworks.
+
+![Solidworks in the Windows app](resources/solidworks-3.png)
 
 ##### Accessing Your Files
-Now that we are loaded into Solidworks, it would probably be beneficial to put some files we need to work on, onto our VM. To add files, click on the "My Files" button. You will be presented two ways to get files on the VM:
+Now that we are loaded into Solidworks, it would probably be beneficial to put some files we need to work on, onto our VM. Unfortunately, the only way to add or save files to this system is via your school OneDrive account. If you have any files you've been working on, upload it to your Florida Poly OneDrive. You can also save directly to it, and download your file from there.
 
-- Temporary Files
-    - You can upload files from your computer to the temporary folder. It will be deleted when you end the session. To upload, select the "Upload Files" button and choose the file you want to work on.
-- OneDrive
-    - Since you are logged in with your school email, it can easily be connected to your Florida Poly OneDrive account. Simply upload your files to that, and it will allow you to load files from it (you might have to connect it to your account).
-
-Afterwards, the files will be available through regular Windows save/load dialogs.
->[!TIP]
->If you use OneDrive to access your files, you may notice two subfolders, `Files` and `Shared`. Choose `Files` to work with your files.
-###### Saving Files To Your Computer
-If you use OneDrive, when you save it should be automatically backed up. 
-If you use the Temporary Folder, you will need to download the files back to your computer so your work doesn't get deleted. To save your file, save it like you would on Windows, and close out of the app you are using. Windows won't let us access our file while another process is using it, so closing out is essential. Once out of your app, navigate to the Temporary Folder directory in the My Files menu. Select the checkbox next to the files you want to save. Click Actions → Download.
-
-![Download your files](resources/solidworks-4.png)
-
-You will get your system's save dialog. Save your file and it will start downloading. Close the My Files Dialog when done.
->[!TIP]
->You can select multiple files, and you can select all by clicking on the checkbox at the very top of the file list. Be ready for a lot of save dialogs!
 ##### Logging Out
-Now that we're done in Solidworks, we can end the session. Click on Profile and then click on End Session.
-![End Session](resources/solidworks-5.png)
+Now that we're done in Solidworks, we can end the session. To end the session, close the app you were using. After a short time, it will kick you out, resulting in the following message:
 
-You will then get the following warning to save files if you haven't. 
-![End Session Error](resources/solidworks-6.png)
+![Session ended](/workshops/livingwithlinuxatfloridapoly/resources/solidworks-4.png)
 
-Click End Session if you are sure you saved everything. You will get a Session Ended screen. You can then close the browser tab. 
+You can then close the browser tab. You may also close the tab once you're done with the app you were using.
 ### Example 4: Mathcad
 ![Mathcad on Wine](/workshops/wine/resources/mathcad-2.png)
 
 Mathcad is a program that allows you to type in math equations as if you were writing them on paper, and have the computer solve it for you. It's often used in various electrical engineering courses here at Poly.
-While it can be run under Wine (as shown in the above screenshot), it is not easy to install, and it has some bugs that make it a dealbreaker for many. The insttallation procedure for Wine was briefly touched on in the workshop's [Readme](https://github.com/PhoenixLinuxUserGroup/PLUG-Resources/blob/main/workshops/wine/wine.md)
-It is available on AppStream, and you can access it similar to how you can access Solidworks
+While it can be run under Wine (as shown in the above screenshot), it is not easy to install, and it has some bugs that make it a dealbreaker for many. Additionally, a license is required to use advanced fetures discussed in the classes that use it. Florida Poly has a license for this, however stuents cannot access this license. While we did cover the installation procedure for Wine in the last workshop's [Readme](https://github.com/PhoenixLinuxUserGroup/PLUG-Resources/blob/main/workshops/wine/wine.md), we recommend using it with the Windows app. As with Solidworks, you can access this from [My Apps](myapps.microsoft.com).
 ### Example 5: Matlab
 ![Matlab on Linux](resources/matlab-1.png)
 
@@ -174,7 +161,7 @@ It will then ask you where your copy of Matlab is. If you copied the default loc
 Below are examples of programs that cannot be run on Linux in their full form. Here, we present some alternatives. For these apps, we recommend dual-booting Windows.
 ### Example 6: Autocad
 Autodesk's Autocad is a CAD software specifically designed for use in drafting, and is an industry standard program for use in civil engineering and construction.
-Autocad unfortunately cannot be run under Linux, not even under Winboat (due to lack of 3D acceleration). At the time of writing, it isn't on AppStream, and the only builds supported by Wine are obsolete by a few decades.
+Autocad unfortunately cannot be run under Linux, not even under Winboat (due to lack of 3D acceleration). At the time of writing, it isn't on the Windows app, and the only builds supported by Wine are obsolete by a few decades.
 #### Alternatives
 There is a web version of Autocad, which can run on any computer with a web browser. It's pretty limited compared to Autocad, and you will need a subscription to access it. Additionally, all data is stored on the cloud, on Autodesk's servers.
 >[!Note]
